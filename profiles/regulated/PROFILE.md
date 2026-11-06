@@ -1,0 +1,3 @@
+# Regulated/high-integrity: baseline and Web SaaS plus
+
+Identify applicable obligations with qualified domain owners; this profile does not assert legal compliance. Version business rules and their effective dates; preserve calculation inputs, source, rounding, outputs and changes in an auditable, access-controlled record. Validate authoritative, independently reviewed fixtures including boundaries and corrections. Define change control, segregation of duties, data retention, access reviews and incident response. Obtain domain-owner approval before changing financial or regulated rules, and an independent human validation of calculations and release approval before production. Document evidence, recovery and reconciliation; never invent statutory rates or calculations.
