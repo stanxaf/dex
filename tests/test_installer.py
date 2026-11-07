@@ -126,6 +126,23 @@ class InstallerTests(unittest.TestCase):
         self.assertFalse(old_file.exists())
         self.assertNotIn('.ai-foundation/templates/stacks/react.md', self.manifest()['files'])
 
+    def test_update_adds_new_docs_and_template_entries_without_touching_config(self):
+        # Backs the reconciliation guidance in docs/agent-governance/adoption.md: an update may add
+        # managed documents and newly required configuration entries. The documents and the updated
+        # template must land so the adopter can diff them, and the project-owned configuration must
+        # be left exactly as it was, because it is reconciled by hand rather than updated for them.
+        self.run_install('--profile', 'web-saas')
+        config_before = (self.project / '.ai-governance.md').read_bytes()
+        (self.source / 'docs/security/new-requirement.md').write_text('# New requirement\nRecord it.\n')
+        template = self.source / 'templates/project/ai-governance.md'
+        template.write_text(template.read_text() + '- New required entry: **set before adoption**.\n')
+        self.run_install()
+        self.assertTrue((self.project / '.ai-foundation/docs/security/new-requirement.md').is_file())
+        self.assertIn('.ai-foundation/docs/security/new-requirement.md', self.manifest()['files'])
+        self.assertEqual((self.project / '.ai-governance.md').read_bytes(), config_before)
+        installed_template = self.project / '.ai-foundation/templates/project/ai-governance.md'
+        self.assertIn('- New required entry:', installed_template.read_text())
+
 
 if __name__ == '__main__':
     unittest.main()

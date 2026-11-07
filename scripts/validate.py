@@ -9,12 +9,15 @@ errors = []
 required = [
     'README.md', 'AGENTS.md', 'CONTRIBUTING.md',
     'docs/agent-governance/workflow.md', 'docs/agent-governance/adoption.md',
+    'docs/agent-governance/instruction-hygiene.md',
     'docs/engineering/standards.md', 'docs/design/design-system.md',
-    'docs/security/security.md', 'docs/testing/quality-gates.md',
+    'docs/security/security.md', 'docs/security/agent-operations.md',
+    'docs/testing/quality-gates.md',
     'profiles/baseline/PROFILE.md', 'profiles/web-saas/PROFILE.md',
     'profiles/regulated/PROFILE.md', 'templates/project/AGENTS.md',
     'templates/project/ai-governance.md', 'templates/ci/node-starter.yml',
-    'examples/sample-project/worked-example.md', '.github/workflows/validate.yml',
+    'examples/sample-project/worked-example.md',
+    'examples/sample-project/blocked-example.md', '.github/workflows/validate.yml',
 ]
 for name in required:
     if not (ROOT / name).is_file():
