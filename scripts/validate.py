@@ -10,7 +10,7 @@ errors = []
 required = [
     'README.md', 'AGENTS.md', 'CONTRIBUTING.md',
     'docs/agent-governance/workflow.md', 'docs/agent-governance/adoption.md',
-    'docs/agent-governance/instruction-hygiene.md',
+    'docs/agent-governance/instruction-hygiene.md', 'docs/agent-governance/setup.md',
     'docs/engineering/standards.md', 'docs/design/design-system.md',
     'docs/security/security.md', 'docs/security/agent-operations.md',
     'docs/security/deployment-gate.md',
@@ -25,7 +25,7 @@ for name in required:
     if not (ROOT / name).is_file():
         errors.append('missing required file: ' + name)
 
-skills = ('planning', 'implementation', 'code-review', 'architecture-review',
+skills = ('setup', 'planning', 'implementation', 'code-review', 'architecture-review',
           'ui-review', 'testing', 'security-review', 'documentation')
 for skill in skills:
     path = ROOT / 'skills' / ('foundation-' + skill) / 'SKILL.md'
@@ -165,6 +165,6 @@ if errors:
     sys.exit(1)
 for path in pending:
     print('NOTE: unfilled owner placeholder (fill before merge):', path)
-print('PASS: required structure, eight skill entrypoints, local Markdown links,'
+print('PASS: required structure, nine skill entrypoints, local Markdown links,'
       ' reading-tier targets, unique rule ids, and resolvable rule citations')
 print('Note: this does not verify agent compliance, external URLs, or application checks.')

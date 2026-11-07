@@ -10,6 +10,18 @@ Each stage is specified below, and the applicable profile may add to it. Obtain 
 
 Before planning, inspect the applicable instructions, profile, architecture, existing components and changes, and how the work will be verified; surface material uncertainties and risks rather than assuming them away. Then state scope, non-goals, steps, verification and any approval boundary. For small, reversible, low-risk work a short inline plan and proportionate checks are enough. For larger or high-risk work, record the task and acceptance criteria; the [task template](../../templates/tasks/task.md) sets out the fields. Assess complexity and risk rather than file count alone. Merge only when required checks and review pass and approvals are recorded, and use repository protection to enforce it.
 
+## One verified batch
+
+Carry agreed work through to a verified result and report once, rather than returning after each step for confirmation the evidence already supplies. Within the agreed scope, settle what the repository, the instructions and the checks can settle: a question the project already answers spends the reviewer's attention for nothing and buries the decisions that need it. This applies to any implementer, person or tool.
+
+Stop before the work is finished for one of three reasons, and say which:
+
+- **An approval boundary is reached.** Prepare the proposal and wait; continue independent safe work meanwhile.
+- **A conflict cannot be resolved in scope** — contradictory instructions, an unreconciled rule, a requirement that cannot be met as specified. Report the conflicting sources instead of choosing between them.
+- **Required verification is unavailable** — a check that does not exist, cannot run in this environment, or needs access you do not have. Finish the independent safe work first, then report the check by name as unrun and say why. An unavailable check is not a pass, and work whose verification did not run is not reported as passing, working or done, however complete the edits look.
+
+Stopping for one of these completes the batch rather than abandoning it: report what was done, what was verified, and what remains. Batching means not fragmenting the work, never proceeding past a boundary to keep momentum.
+
 ## Approval boundaries
 
 Before acting, obtain explicit approval from the authorized human for significant architecture or dependency strategy changes, destructive data operations or migrations, auth/authz changes, production deployment, financial or regulated business rules, weakening security controls, and destructive operations affecting user data. An instruction to investigate or implement does not imply approval to deploy or destroy data, and a destructive migration requires approval even if rollback or recovery is possible.

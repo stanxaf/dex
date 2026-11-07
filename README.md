@@ -4,19 +4,31 @@ A portable set of engineering standards, approval boundaries, Codex skills, and 
 
 ## Adopt in a project
 
-Requires Python 3.9+ and a local checkout of this foundation. From the foundation directory:
+Requires Python 3.9+ and a local checkout of this foundation. **Ask an AI agent to do it** — say this in the project, naming the checkout:
+
+> Set up the DEX AI Foundation in this project. The checkout is at `<path>`; read `docs/agent-governance/setup.md` there and follow it.
+
+That names a file rather than a skill, so it works before anything is installed. The agent then follows [AI-guided setup](docs/agent-governance/setup.md): it inspects your existing instructions, installs the managed files, reconciles contradictions with your rules before connecting anything, connects the foundation to your active instruction file without editing your rules, fills every configuration entry the repository evidences, and hands back the decisions only you can make. Once installed, `$foundation-setup` reaches the same procedure, so a resumed or repeated setup needs no path.
+
+To run the installer yourself instead:
 
 ```sh
 python3 scripts/install.py /path/to/project --profile baseline
 ```
 
-Choose `baseline`, `web-saas`, or `regulated`; see [profiles](profiles/README.md). The installer copies standards into `.ai-foundation/`, installs skills under `.agents/skills/`, and creates `AGENTS.md` and `.ai-governance.md` only if absent. It reports existing instruction files and refuses managed-file collisions or locally modified managed files. It never merges or replaces an existing `AGENTS.md`; if one exists, **add this line to the active instruction file after review**:
+Choose `baseline`, `web-saas`, or `regulated`; see [profiles](profiles/README.md). The installer copies standards into `.ai-foundation/`, installs skills under `.agents/skills/`, and creates `AGENTS.md` and `.ai-governance.md` only if absent. It reports existing instruction files and refuses managed-file collisions or locally modified managed files. It never merges or replaces an existing `AGENTS.md`, and it creates a root one only when no instruction file that applies to the project exists — in the project, above it up to the Git root, or at the known global locations. Creating it would otherwise activate the foundation beside rules nobody has read. It reports all of those, and says the global list is not exhaustive.
 
-> Read `.ai-governance.md`, then the foundation workflow, selected profile and standards it references; follow them for relevant work.
+To connect it by hand: reconcile every applicable instruction file first — global, ancestor, root and nested — then check whether the active file already instructs the agent to follow `.ai-governance.md`. A project rule that is stricter than the foundation is not a conflict and needs no decision; only a genuinely looser or contradictory rule does. **A mention is not proof of connection** — the text may forbid the file, quote it, or point at a path that moved — so read the sentence before deciding. If it genuinely activates the foundation, add nothing. If it does not, **append this line, keeping everything already there**:
 
-Complete `.ai-governance.md`: select the profile, name source-of-truth documents and actual project commands, and reconcile contradictions. Review all reported root and nested instruction files, as well as global instructions; the installer inventories filenames but cannot detect semantic conflicts or enforce inclusion. Do not adopt until conflicts are resolved. A root `AGENTS.override.md` takes precedence over root `AGENTS.md`, so edit the active one. Start a new Codex session and ask it to identify the loaded instructions and selected profile. Inspect [installation details](docs/agent-governance/adoption.md) before updating or handling an interrupted installation.
+> Read `.ai-governance.md`, then the foundation workflow, selected profile and standards they reference, and follow them.
 
-Codex discovers `AGENTS.md` along the project path; closer instructions are later in its chain, `AGENTS.override.md` wins in the same directory, and instruction-size limits apply. Files referenced by an instruction are not automatically loaded as native instruction files: the agent must follow the instruction to read them. Skills are discovered from `.agents/skills/` and can be chosen automatically or requested explicitly, e.g. `$foundation-planning`, `$foundation-implementation`, `$foundation-code-review`, or `$foundation-ui-review`. Restart Codex if newly installed skills do not appear. See [official Codex sources](docs/agent-governance/codex-compatibility.md).
+**Installing files is not finishing setup.** The installer says so, and prints which conditions remain. Setup is complete only when the managed files are installed and verified, contradictions with existing instructions are resolved, the active instruction file instructs the agent to follow `.ai-governance.md` exactly once, every evidence-backed entry is filled, **every handoff decision has been answered by a human and recorded**, and the result is reviewed and committed. Asking a question is not getting an answer: while any decision is outstanding the status is *files installed, setup outstanding*. An unset entry is not a passed check.
+
+**Commit `.ai-foundation/`, `.agents/skills/foundation-*/`, your active instruction file and `.ai-governance.md`** — the foundation skills by name, not the whole `.agents/skills/` directory, which may hold skills your project owns. Distribution is a local copy ([ADR 0001](docs/decisions/0001-distribution.md)), so the committed copy is the installed version: versioning it makes each update a reviewable diff, lets the hash check tell a local edit from an upstream change, makes a bad revision revertible, and means a deleted installation can be restored. An uncommitted one cannot. Do not `.gitignore` it. The agent proposes the commit and does not make it for you.
+
+Review all reported root and nested instruction files, as well as global instructions; the installer inventories filenames but cannot detect semantic conflicts or enforce inclusion. A root `AGENTS.override.md` takes precedence over root `AGENTS.md`, so the override is the active file when both exist. Start a new Codex session and ask it to identify the loaded instructions and selected profile. Inspect [installation details](docs/agent-governance/adoption.md) before updating or handling an interrupted installation.
+
+Codex discovers `AGENTS.md` along the project path; closer instructions are later in its chain, `AGENTS.override.md` wins in the same directory, and instruction-size limits apply. Files referenced by an instruction are not automatically loaded as native instruction files: the agent must follow the instruction to read them. Skills are discovered from `.agents/skills/` and can be chosen automatically or requested explicitly, e.g. `$foundation-setup`, `$foundation-planning`, `$foundation-implementation`, `$foundation-code-review`, or `$foundation-ui-review`. Restart Codex if newly installed skills do not appear. See [official Codex sources](docs/agent-governance/codex-compatibility.md).
 
 ## Operate
 
