@@ -9,3 +9,11 @@ Checked against official OpenAI documentation on 2026-11-06:
 - [Non-interactive workflows](https://developers.openai.com/codex/noninteractive): `codex exec` can be used in CI with appropriate permissions; this foundation does not require it.
 
 Assumptions: users launch Codex within the consuming Git repository and explicitly link existing instructions to the configuration. Discovery is verified by the user in their Codex environment; this repository's checks cannot prove runtime selection, model compliance, or organization's approval settings. Product behavior and protected paths may vary with version and environment; consult current documentation when upgrading. The framework deliberately avoids undocumented hooks or custom agent orchestration.
+
+## Sources this foundation adapts
+
+The [workflow](workflow.md) adapts selected practices from the sources below. Listing them does not imply certification or compliance, and none of them is an instruction the agent follows directly.
+
+- [NIST Secure Software Development Framework](https://csrc.nist.gov/pubs/sp/800/218/final): secure development and verification practices.
+- [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches): enforcement of required reviews and status checks.
+- [Codex instruction discovery](https://developers.openai.com/codex/guides/agents-md): project instruction precedence for Codex; other tools may differ.

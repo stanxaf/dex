@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -40,6 +41,29 @@ class InstallerTests(unittest.TestCase):
         self.assertTrue((self.project / '.agents/skills/foundation-planning/SKILL.md').is_file())
         self.assertIn('.agents/skills/foundation-planning/SKILL.md', self.manifest()['files'])
         self.assertIn('.ai-foundation/docs/engineering/standards.md', self.manifest()['files'])
+
+    def test_fresh_install_names_complete_installed_profile_paths(self):
+        # The config must name every profile by a path that resolves from the project
+        # root. An abbreviated fragment such as `web-saas/PROFILE.md` reads fine but
+        # points nowhere, so a regulated adopter silently loses two of three profiles.
+        for profile in ('baseline', 'web-saas', 'regulated'):
+            with self.subTest(profile=profile):
+                project = self.root / ('project-' + profile)
+                project.mkdir()
+                cmd = [sys.executable, str(self.source / 'scripts/install.py'),
+                       str(project), '--profile', profile]
+                result = subprocess.run(cmd, text=True, capture_output=True)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                config = (project / '.ai-governance.md').read_text()
+                self.assertIn('Selected profile: ' + profile, config)
+                named = re.findall(r'`\.ai-foundation/(profiles/[^`]+\.md)`', config)
+                for expected in ('profiles/baseline/PROFILE.md',
+                                 'profiles/web-saas/PROFILE.md',
+                                 'profiles/regulated/PROFILE.md'):
+                    self.assertIn(expected, named, config)
+                for relative in named:
+                    self.assertTrue((project / '.ai-foundation' / relative).is_file(),
+                                    'config names an uninstalled profile: ' + relative)
 
     def test_existing_instructions_config_and_override_are_preserved(self):
         (self.project / 'AGENTS.override.md').write_text('custom override')
