@@ -14,13 +14,19 @@ Before planning, inspect the applicable instructions, profile, architecture, exi
 
 Choose checks by outcome, affected behavior, risk and destination, not persona or agent. “Try this layout” can end at a feedback checkpoint. State the interpretation when it matters and retain it across iteration. Ask about consequential uncertainty; do not assume an unknown destination is safe.
 
-During exploration, check the idea and relevant risks. For UI changes, inspect the affected rendered view, changed interactions, and affected viewports and states. Report checks and deferrals: an exploration can be ready for feedback without being a verified, consumer-ready change.
+During exploration, check the idea and relevant risks using the selection below. Report checks and deferrals: an exploration can be ready for feedback without being a verified, consumer-ready change.
 
 For each checkpoint, select the applicable items: diff and scope; behavior and tests; rendered UI and accessibility; documentation and generated output; security, destination rules, review and approvals. Record results and any permitted deferrals.
 
 At wrap-up, apply checks for the intended outcome, review the diff, and report evidence, deferrals and risks. Before commit or push, apply the project's rules for the destination; work in progress is not automatically a release. Before presenting a change as complete or ready for consumers, merging or releasing, complete applicable checks, documentation, review and approvals. Project, profile and host-enforced requirements bind at their stated checkpoints. Exploration does not authorize a commit, push, deployment, restricted-data access or another approval-boundary operation.
 
-Run checks when useful or required, not automatically after every edit. Reuse recorded results only while relevant inputs, including code, configuration, dependencies and environment, remain unchanged; otherwise rerun affected checks. Review the actual diff and evidence, and repeat checks when needed to resolve uncertainty. A screenshot alone does not prove an interaction.
+## Selecting verification
+
+Start with the actual diff and acceptance criteria. Identify what changed, affected contexts and consumers, consequences of failure, uncertainty, and the evidence already available. Choose the least costly checks that address those risks at the current checkpoint; a change's category or file count alone does not determine the checks. Explain material choices and gaps briefly. Required project, profile, host and user checks still apply at their stated checkpoints.
+
+Inspect rendered UI when needed to assess the requested visual outcome or a realistic risk, such as unfamiliar placement or styling, responsive reflow, or uncertain contrast in a theme. Select viewports, themes and states according to that risk rather than a fixed matrix. Check keyboard and other interactions when their behavior or accessibility may be affected; a screenshot alone does not prove an interaction. For shared contracts or components, assess affected consumers and use targeted tests or broader journeys when their integration risk warrants them.
+
+Run checks when useful or required, not automatically after every edit. Reuse a recorded result only for the risks and context it actually covers, while its relevant inputs, including code, configuration, dependencies and environment, remain unchanged. Combine it with the current diff and other evidence to assess the change; obtain missing evidence or rerun affected checks when needed. An unchanged token does not establish contrast or appearance in a new context. Review the actual diff and evidence, and repeat checks when needed to resolve uncertainty.
 
 ## One verified batch
 

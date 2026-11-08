@@ -9,7 +9,7 @@ Apply checks at the [workflow checkpoints](../agent-governance/workflow.md#explo
 | Formatting/lint and type checks | Run configured checks for affected code; baseline may omit unsupported type tooling with rationale. |
 | Unit/integration | Cover changed behavior and trust boundaries; use representative data and isolate external services. |
 | End-to-end | Select critical journeys where integration risk warrants; SaaS profiles define required journeys. |
-| Accessibility and visual regression | Test relevant interactive UI and viewports; automate where configured, review screenshots and baseline changes. |
+| Accessibility and visual regression | Assess affected accessibility and visual risks; select evidence using the workflow, run required checks and review intended baseline changes. |
 | Dependencies and secrets | Scan supported dependency manifests and all changes for credentials; investigate findings. |
 | Database migration | For schema/data changes validate migration on realistic disposable data, integrity, compatibility and recovery. |
 | Review/approval | Review actual diff and evidence; obtain the workflow's and the profile's approvals. |

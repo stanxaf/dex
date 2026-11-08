@@ -1,9 +1,9 @@
 ---
 name: foundation-ui-review
-description: Review rendered interfaces for design-system reuse, accessibility, responsive layouts, interactions, and component states.
+description: Review UI changes for design-system reuse, accessibility, responsive layouts, interactions, and component states.
 ---
 # UI and UX review
 
-Input: request, actual UI and diff, `.ai-governance.md`, design sources and visual baselines. Read `.ai-foundation/docs/design/design-system.md` and selected profile. Inspect approved components, tokens and typography. Inspect the rendered UI or current visual evidence at representative viewports, and assess evidence for keyboard/focus behavior and applicable loading, empty, success, error, validation and disabled states. Run checks when required or when evidence is missing, stale or insufficient; a screenshot alone does not verify interaction behavior.
+Input: request, actual diff, `.ai-governance.md`, design sources and available visual evidence. Read `.ai-foundation/docs/design/design-system.md`, the workflow's verification selection and the selected profile. Assess approved components, tokens, typography and affected interaction and accessibility risks. Inspect the rendered UI or current visual evidence when the requested review or risks require it; select viewports, themes and states accordingly. Run checks when required or when evidence is missing, stale or insufficient; a screenshot alone does not verify interaction behavior.
 
-Report actionable findings with location, viewport/state, reproduction and impact; record unavailable rendered inspection and any missing checks. Escalate consequential design-system extensions and unresolved product choices to the owner. Complete when relevant states and evidence were inspected or limitations are explicit; do not approve a visual change from code alone.
+Report actionable findings with location, viewport/state where applicable, reproduction and impact; record required unavailable inspection and missing checks. Escalate consequential design-system extensions and unresolved product choices to the owner. Do not claim rendered verification from code alone; report limitations and defer completion when a required check is unavailable.

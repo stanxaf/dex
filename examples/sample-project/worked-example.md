@@ -17,3 +17,14 @@ These are fictional illustrations; actual project, profile and host rules determ
 - **Stricter local rule:** A project requires a documentation check whenever a component page changes. Run it at that checkpoint even during exploration.
 - **Work in progress:** The user requests a commit to a known work-in-progress branch. Apply that destination's rules and report permitted deferrals; do not assume an unknown branch is safe or that a commit is a release.
 - **Prepare for consumers:** Complete applicable tests and documentation. A separate reviewer inspects the actual diff and current evidence before merge; rerun checks if required or if the evidence is insufficient. Meet merge gates and obtain any required release approval.
+
+## Selecting checks
+
+These hypothetical examples assume no stricter required check. Each choice depends on the actual context and current evidence.
+
+- **Copy:** Review the diff; inspect the affected layout if the new text could overflow or change responsive behavior.
+- **Existing button variant:** Review the prop, component usage and placement. Outline to primary changes appearance even if tokens are unchanged. Current evidence may be enough; check the affected theme, contrast or rendered view if the context or requested outcome makes them uncertain. Do not add dark-mode, viewport or browser checks solely because a UI prop changed.
+- **Responsive layout:** Inspect affected widths and states; add interaction checks if behavior also changed.
+- **Theme token:** Check affected themes, surfaces and representative consumers, including contrast where relevant.
+- **Keyboard or state logic:** Exercise the changed interactions and focus behavior with targeted tests; a screenshot is insufficient.
+- **Shared API:** Check affected callers and contracts; test a broader journey if integration risk warrants it.
