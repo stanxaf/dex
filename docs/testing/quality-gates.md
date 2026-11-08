@@ -2,6 +2,8 @@
 
 Projects MUST record actual commands and required status checks in `.ai-governance.md`; configure branch protection or equivalent so a missing, failing, or unrun required check blocks merge. The repository owner decides any exception, recorded as the workflow requires. A required check that is unavailable is not a pass.
 
+Apply checks at the [workflow checkpoints](../agent-governance/workflow.md#exploration-and-checkpoints); project and profile rules may require them earlier.
+
 | Area | Minimum decision |
 | --- | --- |
 | Formatting/lint and type checks | Run configured checks for affected code; baseline may omit unsupported type tooling with rationale. |

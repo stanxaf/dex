@@ -10,15 +10,27 @@ Each stage is specified below, and the applicable profile may add to it. Obtain 
 
 Before planning, inspect the applicable instructions, profile, architecture, existing components and changes, and how the work will be verified; surface material uncertainties and risks rather than assuming them away. Then state scope, non-goals, steps, verification and any approval boundary. For small, reversible, low-risk work a short inline plan and proportionate checks are enough. For larger or high-risk work, record the task and acceptance criteria; the [task template](../../templates/tasks/task.md) sets out the fields. Assess complexity and risk rather than file count alone. Merge only when required checks and review pass and approvals are recorded, and use repository protection to enforce it.
 
+## Exploration and checkpoints
+
+Choose checks by outcome, affected behavior, risk and destination, not persona or agent. “Try this layout” can end at a feedback checkpoint. State the interpretation when it matters and retain it across iteration. Ask about consequential uncertainty; do not assume an unknown destination is safe.
+
+During exploration, check the idea and relevant risks. For UI changes, inspect the affected rendered view, changed interactions, and affected viewports and states. Report checks and deferrals: an exploration can be ready for feedback without being a verified, consumer-ready change.
+
+For each checkpoint, select the applicable items: diff and scope; behavior and tests; rendered UI and accessibility; documentation and generated output; security, destination rules, review and approvals. Record results and any permitted deferrals.
+
+At wrap-up, apply checks for the intended outcome, review the diff, and report evidence, deferrals and risks. Before commit or push, apply the project's rules for the destination; work in progress is not automatically a release. Before presenting a change as complete or ready for consumers, merging or releasing, complete applicable checks, documentation, review and approvals. Project, profile and host-enforced requirements bind at their stated checkpoints. Exploration does not authorize a commit, push, deployment, restricted-data access or another approval-boundary operation.
+
+Run checks when useful or required, not automatically after every edit. Reuse recorded results only while relevant inputs, including code, configuration, dependencies and environment, remain unchanged; otherwise rerun affected checks. Review the actual diff and evidence, and repeat checks when needed to resolve uncertainty. A screenshot alone does not prove an interaction.
+
 ## One verified batch
 
-Carry agreed work through to a verified result and report once, rather than returning after each step for confirmation the evidence already supplies. Within the agreed scope, settle what the repository, the instructions and the checks can settle: a question the project already answers spends the reviewer's attention for nothing and buries the decisions that need it. This applies to any implementer, person or tool.
+Carry agreed work through to the verification required for its checkpoint and report once, rather than returning after each step for confirmation the evidence already supplies. Within the agreed scope, settle what the repository, the instructions and the checks can settle: a question the project already answers spends the reviewer's attention for nothing and buries the decisions that need it. This applies to any implementer, person or tool.
 
 Stop before the work is finished for one of three reasons, and say which:
 
 - **An approval boundary is reached.** Prepare the proposal and wait; continue independent safe work meanwhile.
 - **A conflict cannot be resolved in scope** — contradictory instructions, an unreconciled rule, a requirement that cannot be met as specified. Report the conflicting sources instead of choosing between them.
-- **Required verification is unavailable** — a check that does not exist, cannot run in this environment, or needs access you do not have. Finish the independent safe work first, then report the check by name as unrun and say why. An unavailable check is not a pass, and work whose verification did not run is not reported as passing, working or done, however complete the edits look.
+- **Verification required for the current checkpoint is unavailable** — a check that does not exist, cannot run in this environment, or needs access you do not have. Finish the independent safe work first, then report the check by name as unrun and say why. An unavailable check is not a pass; do not claim that checkpoint was met. Checks deferred to a later checkpoint remain unverified, not unavailable passes.
 
 Stopping for one of these completes the batch rather than abandoning it: report what was done, what was verified, and what remains. Batching means not fragmenting the work, never proceeding past a boundary to keep momentum.
 

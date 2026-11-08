@@ -20,6 +20,7 @@
 
 ## Verification
 
+- Intended checkpoint and destination; applicable required checks:
 - Commands / checks to run and expected evidence:
 - Decision or exception records:
 
@@ -27,5 +28,6 @@
 
 - Files changed:
 - Actual checks and results; checks not run:
+- Deferred checks and what must happen before the next checkpoint:
 - Blockers and residual risks:
 - Review, decision, or exception records:
