@@ -10,6 +10,12 @@ Each stage is specified below, and the applicable profile may add to it. Obtain 
 
 Before planning, inspect the applicable instructions, profile, architecture, existing components and changes, and how the work will be verified; surface material uncertainties and risks rather than assuming them away. Then state scope, non-goals, steps, verification and any approval boundary. For small, reversible, low-risk work a short inline plan and proportionate checks are enough. For larger or high-risk work, record the task and acceptance criteria; the [task template](../../templates/tasks/task.md) sets out the fields. Assess complexity and risk rather than file count alone. Merge only when required checks and review pass and approvals are recorded, and use repository protection to enforce it.
 
+## Efficient agent use
+
+Default to one implementer and a focused batch. Select available agents and reasoning effort for the task's complexity and risk. Delegate parallel work only when tasks are independent, bounded and likely to save more effort than coordination costs; avoid conflicting edits. Respect the user's operating model and platform permissions.
+
+When evaluating efficiency across tasks, compare similar work using available evidence such as elapsed time, agent calls, token use or cost, rework and defects found. Record missing data and do not claim savings or quality improvements without evidence. This guidance does not change required verification, approvals or separate review.
+
 ## Exploration and checkpoints
 
 Choose checks by outcome, affected behavior, risk and destination, not persona or agent. “Try this layout” can end at a feedback checkpoint. State the interpretation when it matters and retain it across iteration. Ask about consequential uncertainty; do not assume an unknown destination is safe.
