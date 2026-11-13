@@ -8,7 +8,17 @@ Each stage is specified below, and the applicable profile may add to it. Obtain 
 
 ## Plan and inspect
 
-Before planning, inspect the applicable instructions, profile, architecture, existing components and changes, and how the work will be verified; surface material uncertainties and risks rather than assuming them away. Then state scope, non-goals, steps, verification and any approval boundary. For small, reversible, low-risk work a short inline plan and proportionate checks are enough. For larger or high-risk work, record the task and acceptance criteria; the [task template](../../templates/tasks/task.md) sets out the fields. Assess complexity and risk rather than file count alone. Merge only when required checks and review pass and approvals are recorded, and use repository protection to enforce it.
+Before planning, inspect the applicable instructions, profile, architecture, existing components and changes, and how the work will be verified; surface material uncertainties and risks rather than assuming them away. Summarize the intended outcome, planned changes and likely files, scope and non-goals, acceptance criteria, checks to run and any approval boundary as a concise implementation brief. For small, reversible, low-risk work a short inline list and proportionate checks are enough. For larger or high-risk work, record the task; the [task template](../../templates/tasks/task.md) sets out the fields. Assess complexity and risk rather than file count alone. Merge only when required checks and review pass and approvals are recorded, and use repository protection to enforce it.
+
+## Coder selection and handoffs
+
+Use a tool-neutral implementation brief by default; DEX does not assign a particular coder or require a separate coding tool. A planning or handoff request ends with the brief. A direct implementation request proceeds through the workflow using the current agent when the user's operating model permits it.
+
+Resolve the implementer from an explicit task choice, then an active session choice, then a project preference. With no choice, leave a handoff unnamed. “Ask Kiro” selects Kiro for that task; “today we use Kiro” or “we use Kiro here” selects Kiro for the current chat until changed. An explicit request for the current agent to implement selects it for that task. Naming a coder alone does not start implementation or authorize installing tools, granting access or sending messages.
+
+Keep session choices in the conversation. Persist a project default only when the user explicitly asks to save it, in project-owned instructions or `.ai-governance.md`; a session choice never edits project or global instructions. A coder preference changes the implementer, not the required checks, separate review or approval boundaries.
+
+Title the default output “Implementation brief”; tailor a named handoff to the selected coder and any requested format. Include a completion-report requirement: files changed, what changed, checks run with pass/fail results, checks not run, and remaining blockers or unrelated failures with evidence. Include “Do not call complete unless…” with the acceptance criteria and required verification for the intended checkpoint. A finished brief completes planning only; implementation still requires any outstanding decisions or approvals and its own evidence.
 
 ## Efficient agent use
 

@@ -34,6 +34,19 @@ Codex discovers `AGENTS.md` along the project path; closer instructions are late
 
 Follow [request → inspect → plan → approve when required → implement → test → review → report → merge](docs/agent-governance/workflow.md). Small, low-risk work can use a short inline plan. Have a separate reviewer inspect the actual diff and evidence; a fresh review pass is useful, but is not independent human approval. Use the [task](templates/tasks/task.md) and [review](templates/reviews/review.md) templates when useful or when the profile requires a record. [Agent operations](docs/security/agent-operations.md) governs the agent's own tool surface, session credentials, untrusted content and automated runs, and is read for all work; the [deployment gate](docs/security/deployment-gate.md) adds the conditions an automated deployment must meet and is read only before one. [Instruction hygiene](docs/agent-governance/instruction-hygiene.md) governs keeping the loaded instruction set canonical, budgeted and reconciled.
 
+Planning produces a concise, tool-neutral **implementation brief**: the outcome, planned changes and likely files, scope limits, acceptance criteria and checks. Choose a coder per task, session or project using the [coder-selection guidance](docs/agent-governance/workflow.md#coder-selection-and-handoffs):
+
+| Request | Expected result |
+| --- | --- |
+| “Plan this” | An implementation brief for the selected implementer, or unnamed if none. |
+| “Today we use Kiro” | Kiro handoffs for this chat until changed; no saved preference. |
+| “Ask Kiro to implement this” | A Kiro prompt for this task. |
+| “Save Kiro as this project's default coder” | A project-owned preference for future work. |
+| “You implement this” | The current agent implements within scope and applicable boundaries. |
+| “Check this implementation” | Review of the actual changes and evidence against the brief. |
+
+Kiro is an optional handoff example. The foundation keeps its documented Codex installation and discovery support; choosing another implementer does not establish that tool's instruction discovery or integration.
+
 Say “try this layout” for an exploratory feedback checkpoint, or “make this ready for consumers” when the full applicable checks and review are needed. The [checkpoint guidance](docs/agent-governance/workflow.md#exploration-and-checkpoints) explains what may be deferred and what still binds; project and profile rules may require checks earlier.
 
 To request a review, ask: “Use `$foundation-code-review` to inspect the actual diff against the task and checks; report actionable findings first.” For a UI review use `$foundation-ui-review` and provide the design source and any requested viewports or visual outcome. The [workflow](docs/agent-governance/workflow.md#selecting-verification) selects inspection by affected risk and evidence. The [worked example](examples/sample-project/worked-example.md) follows a feature through the whole lifecycle, including reviewer findings; the [blocked example](examples/sample-project/blocked-example.md) shows a destructive request and an instruction conflict stopping work, with the failing responses named.
